@@ -1,0 +1,363 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --color-primary:#5d4037;
+    --color-secondary:rgb(93, 93, 93);
+    --color-btn-light:#00796b;
+    --color-btn-dark:#00796b;
+    --color-btn-shaded:rgb(22, 88, 85);
+    --color-btn-upvoted:rgb(172, 56, 56);
+    --color-shadow-light: rgb(114, 113, 113);
+    --color-shadow-dark: rgb(0, 0, 0);
+    
+}
+
+
+/* GENERAL FORMATING----------------------------------------------- */
+
+.container{
+    height: 100%;
+}
+
+h2{
+    font-weight: 300;
+    font-size: 35px;
+    color:var(--color-primary); 
+}
+  
+
+/* -------------------------------SECTIONS------------------------------------------------- */
+
+
+/* NAV SECTION ------------------------------------------------------- */
+
+nav{
+    height:65px;
+}
+
+nav img{
+    margin: 5px;
+    margin-left:10px;
+}
+
+nav li:hover{
+    background-color: var(--color-btn-light);
+}
+
+nav a:hover{
+    font-size: 20px;
+    color:var(--color-primary);
+    font-weight: bold;
+}
+
+
+/* SIDENAV */
+#hamburger{
+    opacity: 65%;
+}
+
+#hamburger li{
+    margin-top: 10px;
+}
+
+#hamburger li:hover{
+    background-color: var(--color-btn-dark);
+}
+
+#hamburger a{
+    color:var(--color-primary);
+    font-size: 20px;
+
+}
+
+#hamburger a:hover{
+    color:white;
+}
+
+
+/* BANNER SECTION ------------------------------------------------------- */
+
+.banner{
+    margin:0;
+    padding: 0;
+    height:300px; 
+    text-align: center;
+    box-shadow: 1px 2px 2px var(--color-shadow-light);
+}
+
+.banner h1{
+    font-size: 90px;
+    text-shadow: 2px 2px 2px var(--color-shadow-dark); 
+    color:var(--color-primary); 
+    font-family: 'Anton', sans-serif;
+}
+
+.apptitle{
+    margin-top: 90px;
+    font-size: 100px; 
+    color:var(--color-primary);
+}
+
+.banner-landing-page{
+    background: 97% / 21% no-repeat url("../images/fond.png"), linear-gradient(rgba(93, 64, 55, 0.8), rgba(244, 165, 140, 0.3));    
+}
+
+.banner-category-webapp{
+    background: 92% / 28% no-repeat url("../images/fond-webapp.png"), linear-gradient(rgba(93, 64, 55, 0.8), rgba(244, 165, 140, 0.3));     
+    
+}
+
+.banner-category-photography{
+    background: 94% / 27% no-repeat url("../images/fond-photography.png"), linear-gradient(rgba(93, 64, 55, 0.8), rgba(244, 165, 140, 0.3));     
+    
+}
+.banner-category-mac{
+    background: 90% / 15% no-repeat url("../images/fond-mac.png"), linear-gradient(rgba(93, 64, 55, 0.8), rgba(244, 165, 140, 0.3));     
+   
+}
+
+.banner-category-game{
+    background: 95% / 15% no-repeat url("../images/fond-game.png"), linear-gradient(rgba(93, 64, 55, 0.8), rgba(244, 165, 140, 0.3));     
+   
+}
+
+.banner-category-book{
+    background: 97% / 27% no-repeat url("../images/fond-book.png"), linear-gradient(rgba(93, 64, 55, 0.8), rgba(244, 165, 140, 0.3));     
+}
+
+
+/* CATEGORY SECTION ------------------------------------------------------- */
+
+.category{
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+
+
+/* COMPONENTS ------------------------------------------------------------------------------------------ */
+
+
+/* LOG IN FORM ------------------------------------------------------- */
+
+.form-content{
+    width:600px;
+    margin:0 auto;
+    display: flex;
+    justify-content: center; 
+}
+
+.form-content span{
+    font-size: 10px;
+    font-style: italic;
+}  
+
+.banner span{
+    color:var(--color-primary);
+    font-weight: bold;
+    font-size: 40px;  
+}
+
+/* SEARCH_BAR  ------------------------------------------------------- */
+
+.search_bar{
+    margin-top: 20px;
+}
+
+.search_bar form{
+    box-shadow: 1px 1px 2px var(--color-shadow-light);
+}
+
+
+/* PRODUCT CARDS ------------------------------------------------------- */
+
+.card-container{
+    display: flex;
+    justify-content: space-between; 
+}
+
+.card{
+    height: 100%;
+    width: 100%;
+}
+
+.card-img-holder{
+  width: 100%;
+    
+}
+
+.card-img-holder img{
+    width: 100%;
+    padding: 0.5rem;
+}
+.card-info{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    height: 250px;
+    padding: 0.3rem;
+}
+
+.card-info .card-title{
+    font-size: 19px;
+    display: block;
+}
+
+.card-info .card-category{
+    font-size: 13px;
+    color: var(--color-secondary);
+    margin: 0.3rem;
+}
+
+.card-info p{
+    font-size: 13px;
+    margin-top: 1rem;
+    color: var(--color-secondary);
+    font-weight: 300;
+}
+
+.search_box{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+/* PRODUCT LIST ITEM---------------------------------------------------- */
+
+.product-list, .product-list{
+    padding: 2rem 1rem;
+}
+
+.popular-list .title, .product-list .title{
+    color: var(--color-primary);
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.popular-list p, .product-list p{
+    color: var(--color-secondary);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* BUTTONS ------------------------------------------------------------- */
+
+.banner button{
+    display: inline-block;
+    background-color: var(--color-btn-light);
+    border-radius: 5px;
+    font-size: 17px; 
+    font-weight: bold;
+    color:rgba(244, 165, 140);
+    padding: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.banner button:hover{
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.greeting-msg button{
+    margin-bottom: 25px;
+
+}
+.greeting-msg button a{
+    color:rgba(244, 165, 140);
+}
+
+.greeting-msg button a:hover{
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.search_bar button{
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.search_bar button a:hover{
+    color:var(--color-primary);
+}
+
+.card-info .btn{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.product-list .upvote-btn{
+    width: 100px;
+    background-color:var(--color-primary);
+}
+
+.btn-upvoted{
+    color: var(--color-btn-upvoted);
+    background-color: var(--color-btn-upvoted);
+}
+
+/* FOOTER SECTION ------------------------------------------ */
+
+footer{
+    font-weight: 100;
+}
+
+footer h5{
+margin-bottom: 1rem;
+font-weight: 400;
+}
+
+footer a:hover{
+    text-decoration: underline; 
+}
+
+.footer-copyright a{
+    padding: 0 1rem
+}
+      
+/*----------------------------PRODUCT LIST SECTION------------------------------*/
+
+
+  /* MEDIA QUERIES ------------------------------------------------------ */
+
+
+@media all and (max-width: 1024px){
+    
+    body{
+        width:auto;   
+    }
+    
+    .banner{
+        width:100%;
+        height:auto;  
+    }
+
+    .banner h1{
+        font-size: 70px;
+    }
+
+    .banner button{
+        padding-left:5px;
+        padding-right:5px;
+        margin:0 auto;  
+    }
+
+    span{
+    font-size: 30px;  
+    }
+   
+    .banner{  
+        background:linear-gradient(rgba(93, 64, 55, 0.8), rgba(244, 165, 140, 0.3));     
+        } 
+}
+
+  
