@@ -1,95 +1,16 @@
 
-let container = document.querySelector("#container");
-
-let divBoard = document.createElement("div")
-divBoard.classList.add('board');
-container.appendChild(divBoard);
-
-divBoard = document.querySelector('.board');
-divBoard.setAttribute('id', 'board');
-
-for (let i= 1; i <= 9; i++) {
-
-  let divCell = document.createElement("div");
-  divCell.classList.add("cell");
-  divBoard.appendChild(divCell);
-  divCell.setAttribute('data-cell',"");
-  divCell.setAttribute('id', 'cell-'+ i);
-
-}
-
 class Morpion 
 {
   constructor(){
+
+    this.board = document.querySelector('#board');
     this.player1 = "x";
+    this.array = [];
     this.player2 = "circle";
     this.circleTurn;
-  }
-
-
-  // GETTERS ------------------//
-  getPlayer1(){
-    return this.player1;
-  }
-  
-  
-  getPlayer2(){
-    return this.player2;
-  }
-
-  getCircleTurn(){
-    return this.circleTurn;
-  }
-
-
-  // SETTERS ------------------//
-  setCircleTurn(status){
-    this.circleTurn = status;
-  }
-
-
-  startGame(){
-    
-    this.setCircleTurn(false);
-    let cells = document.querySelectorAll('[data-cell]');
-    console.log(cells);
-    
-    cells.forEach(cell => {
-      cell.addEventListener("click", function handleClick(event){
-        
-        const cell = event.target;
-        const currentPlayer = newGame.getCircleTurn() ? newGame.getPlayer2() : newGame.getPlayer1();
-    
-        newGame.play(cell, currentPlayer);
-       
-        newGame.switchTurn();
-        newGame.setBoardHoverClass();
-      }, { once:true})
-    })
-  }
-
-  setBoardHoverClass(){
-    let board = document.querySelector("#board");
-    
-    board.classList.remove(newGame.getPlayer1());
-    board.classList.remove(newGame.getPlayer2());
-    if(newGame.getCircleTurn()){
-      board.classList.add(newGame.getPlayer2())
-    }else{
-      board.classList.add(newGame.getPlayer1());
-    }
-  }
-  play(cell, currentPlayer){
-    cell.classList.add(currentPlayer);
-  }
-  
-  switchTurn(){
-    this.setCircleTurn(!this.getCircleTurn());
-  }
-
-  checkWin()
-  {
-    let WINNING_COMBINATIONS = [
+    this.timer;
+    this.winningCombination = 
+   [
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8],
@@ -98,26 +19,152 @@ class Morpion
       [2, 5, 8],
       [0, 4, 8],
       [2, 4, 6]
-    ];
-
-    function checkWin(currentPlayer){
-          WINNING_COMBINATIONS.some(combination =>{
-            return combination.every(index => {
-              return cells[index].classList.contains(currentPlayer);
-            })
-          })
-      }
-
-
+    ]
   }
   
+  createBoard(){
+    
+    let container = document.querySelector("#container");
+    // let board = document.querySelector('.board');
+    
+    let displayContainer = document.createElement("div");
+    container.appendChild(displayContainer);
+    displayContainer.classList.add("displayContainer");
+  
+    let restartButton = document.createElement("button");
+    displayContainer.appendChild(restartButton);
+    restartButton.classList.add("restart");
+    restartButton.innerHTML = "Restart"
+  
+    let timer = document.createElement("h2");
+    displayContainer.appendChild(timer);
+    timer.classList.add("timer");
+    timer.innerHTML = "12.30"
+  
+    let winningMessageElement = document.createElement("p");
+    displayContainer.appendChild(winningMessageElement);
+    winningMessageElement.classList.add("winningMessage")
+    
+  
+    for (let i= 0; i <= 8; i++) {
+      let divCell = document.createElement("div");
+      divCell.classList.add("cell");
+      board.appendChild(divCell);
+      divCell.setAttribute('data-cell', i);
+      divCell.setAttribute('id', 'cell-'+ i);
+    } 
+  }
+ 
+  startGame(){
+    // Create the game interface in the DOM
+    this.createBoard();
+    
+    
+    this.circleTurn = false;
+
+    this.board.addEventListener("click", (event) => {
+      this.play (event);     
+    })
+  }
+  
+    play(event)
+    {
+      const currentPlayer = this.circleTurn ? this.player2 : this.player1;
+      event.target.classList.add(currentPlayer);
+      this.switchTurn();
+      this.setBoardHoverClass();
+      this.getGameCombination(event)
+
+      // event.target.getAttribute("data-cell")
+      // let cells = document.querySelectorAll(".cell")
+      
+      if(this.checkWin(currentPlayer)){
+        console.log("winna")
+      };
+    }
+
+    switchTurn(){
+      this.circleTurn = !this.circleTurn;
+    }
+
+    checkWin(currentPlayer)
+
+    {
+      let cells = document.querySelectorAll('[data-cell]');
+      return this.winningCombination.some(combination =>{
+        return combination.every(index => {
+          return cells[index].classList.contains(currentPlayer);
+        })
+      })    
+    }
+    
+    getGameCombination(event){
+      
+      console.log(this.array);
+      
+      console.log(event.target.getAttribute("data-cell"));
+      this.array.push(event.target.getAttribute("data-cell"))
+      console.log(this.array)
+    }
+
+      // cells.forEach(cell =>{
+      //   console.log(cell.getAttribute("data-cell"));
+      //   // return cell.getAttribute("[data-cell]");
+      // })
+   
+  
+   
+  // je veux récupérer le data-cell et la class x ou Circle de la  case
+
+
+
+  
+
+    checkDraw(){
+
+    }
+
+    refreshGame(){
+
+    }
+
+    endGame(draw){
+      if (draw){
+
+      }else{
+
+      }
+    }
+
+  setBoardHoverClass(){
+    this.board.classList.remove(this.player1);
+    this.board.classList.remove(this.player2);
+    if(this.circleTurn){
+      this.board.classList.add(this.player2);
+    }else{
+      this.board.classList.add(this.player1);
+    }
+  } 
 }
 
 
 let newGame = new Morpion();
 newGame.startGame();
 
-
+    // this.grid.forEach(cell => {
+    //   cell.addEventListener("click", function(event){
+    //     event.target.classList.add(currentPlayer);
+    //     const currentPlayer = this.circleTurn ? this.player2 : this.player1;
+        
+    //     // this.play(cell, currentPlayer);
+    //     // this.switchTurn();
+    //     // this.setBoardHoverClass();
+    //   }, { once:true})
+      
+    // })
+  
+    //add an event listener to targeted cells
+    
 
 // `
 //   <div id="board" class="board">
